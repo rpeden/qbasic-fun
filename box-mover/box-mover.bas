@@ -3,11 +3,11 @@
 ' around the screen.
 '
 
+'Set a nice friendly window title
+_TITLE "Box Mover"
+
 'Set screen mode to 640x480
 SCREEN 12
-
-'Set a nice friendly window title
-SHELL "title Box Mover"
 
 'Constants
 SCREEN_WIDTH = 640
