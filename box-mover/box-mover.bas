@@ -3,16 +3,16 @@
 ' around the screen.
 '
 
-'Set a nice friendly window title
-_TITLE "Box Mover"
-
 'Set screen mode to 640x480
 SCREEN 12
 
+'Set a nice friendly window title
+SHELL "title Box Mover"
+
 'Constants
-SCREEN_WIDTH = _WIDTH
-SCREEN_HEIGHT = _HEIGHT
-CONST PIXELS_TO_MOVE = 1
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
+PIXELS_TO_MOVE = 1
 
 'Variables
 x = 50
@@ -25,30 +25,35 @@ CALL draw_a_box(x, y, width, height, colour)
 
 DO
     _LIMIT 180
+
+    'obliterate old box
+    CALL draw_a_box(x, y, width, height, 0)
+
+    'update box position if arrow keys pressed
     IF _KEYDOWN(CVI(CHR$(0) + "H")) THEN
-        CALL draw_a_box(x, y, width, height, 0)
         y = y - PIXELS_TO_MOVE
         IF y < 0 THEN y = 0
-        CALL draw_a_box(x, y, width, height, colour)
+        'CALL draw_a_box(x, y, width, height, colour)
     END IF
     IF _KEYDOWN(CVI(CHR$(0) + "P")) THEN
-        CALL draw_a_box(x, y, width, height, 0)
         y = y + PIXELS_TO_MOVE
         IF y + height > SCREEN_HEIGHT THEN y = 480 - height
-        CALL draw_a_box(x, y, width, height, colour)
+        'CALL draw_a_box(x, y, width, height, colour)
     END IF
     IF _KEYDOWN(CVI(CHR$(0) + "K")) THEN
-        CALL draw_a_box(x, y, width, height, 0)
         x = x - PIXELS_TO_MOVE
         IF x < 0 THEN x = 0
-        CALL draw_a_box(x, y, width, height, colour)
+        'CALL draw_a_box(x, y, width, height, colour)
     END IF
     IF _KEYDOWN(CVI(CHR$(0) + "M")) THEN
-        CALL draw_a_box(x, y, width, height, 0)
         x = x + PIXELS_TO_MOVE
         IF x + width > SCREEN_WIDTH THEN x = 640 - width
-        CALL draw_a_box(x, y, width, height, colour)
+        'CALL draw_a_box(x, y, width, height, colour)
     END IF
+
+    'draw the new box
+    CALL draw_a_box(x, y, width, height, colour)
+    _DISPLAY
 
 LOOP UNTIL kbd$ = CHR$(27) '27 is escape key
 
