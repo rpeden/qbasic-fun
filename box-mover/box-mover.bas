@@ -33,22 +33,18 @@ DO
     IF _KEYDOWN(CVI(CHR$(0) + "H")) THEN
         y = y - PIXELS_TO_MOVE
         IF y < 0 THEN y = 0
-        'CALL draw_a_box(x, y, width, height, colour)
     END IF
     IF _KEYDOWN(CVI(CHR$(0) + "P")) THEN
         y = y + PIXELS_TO_MOVE
         IF y + height > SCREEN_HEIGHT THEN y = 480 - height
-        'CALL draw_a_box(x, y, width, height, colour)
     END IF
     IF _KEYDOWN(CVI(CHR$(0) + "K")) THEN
         x = x - PIXELS_TO_MOVE
         IF x < 0 THEN x = 0
-        'CALL draw_a_box(x, y, width, height, colour)
     END IF
     IF _KEYDOWN(CVI(CHR$(0) + "M")) THEN
         x = x + PIXELS_TO_MOVE
         IF x + width > SCREEN_WIDTH THEN x = 640 - width
-        'CALL draw_a_box(x, y, width, height, colour)
     END IF
 
     'draw the new box
