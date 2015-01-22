@@ -21,8 +21,6 @@ width = 150
 height = 50
 colour = 12
 
-CALL draw_a_box(x, y, width, height, colour)
-
 DO
     _LIMIT 180
 
