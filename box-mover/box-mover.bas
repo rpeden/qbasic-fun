@@ -13,6 +13,8 @@ SCREEN 12
 SCREEN_WIDTH = _WIDTH
 SCREEN_HEIGHT = _HEIGHT
 CONST PIXELS_TO_MOVE = 1
+CONST COLOUR_BLACK = 0
+CONST COLOUR_RED = 12
 
 'Variables
 x = 50
@@ -25,7 +27,7 @@ DO
     _LIMIT 180
 
     'obliterate old box
-    CALL draw_a_box(x, y, width, height, 0)
+    CALL draw_a_box(x, y, width, height, COLOUR_BLACK)
 
     'update box position if arrow keys pressed
     IF _KEYDOWN(CVI(CHR$(0) + "H")) THEN
@@ -46,7 +48,7 @@ DO
     END IF
 
     'draw the new box
-    CALL draw_a_box(x, y, width, height, colour)
+    CALL draw_a_box(x, y, width, height, COLOUR_RED)
     _DISPLAY
 
 LOOP UNTIL _KEYDOWN(27) '27 is escape key
