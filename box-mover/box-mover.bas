@@ -51,7 +51,7 @@ DO
     CALL draw_a_box(x, y, width, height, colour)
     _DISPLAY
 
-LOOP UNTIL kbd$ = CHR$(27) '27 is escape key
+LOOP UNTIL _KEYDOWN(27) '27 is escape key
 
 SUB draw_a_box (x, y, width, height, colour)
 LINE (x, y)-(x + width, y + height), colour, BF
